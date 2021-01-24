@@ -3,10 +3,37 @@ import {
   makeStyles,
   Theme
 } from "@material-ui/core/styles";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useWorker } from "react-hooks-worker";
 import { Link, Route, useHistory } from "react-router-dom";
 import { AppToolbar } from "../../@components/AppToolbar";
+// import CalcFib from "../../CalcFib";
 import './style.scss';
+
+const calcFib: any = (x: number) => {
+
+  let res = x
+  for (let i = x; i < 100; i++) {
+    res = i
+    // console.log(res);
+  }
+
+  return res;
+};
+
+const CalcFib: React.FC<{ count: number }> = ({ count }) => {
+  console.log('Started');
+
+  const { result, error } = useWorker(calcFib, count);
+
+  if (error) return <div>Error:{error}</div>;
+
+  if (result) {
+    console.log('Ended');
+  }
+
+  return <div>Result:{result}</div>;
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +57,6 @@ const Framework = (props: any) => {
         <div className="w3-container" style={{ padding: 30 }}>
           <p>Details for framework: {props.name}</p>
           <p>Some text. Some text. Some text.</p>
-          <button onClick={handleClose}>Close</button>
         </div>
       </div>
 
@@ -58,6 +84,12 @@ export const HomePage = (props: any) => {
             <li><Link to={`${basePath}/angular`}>Angular JS</Link></li>
             <li><Link to={`${basePath}/vue`}>Vue JS</Link></li>
           </ul>
+          <div>
+            <button onClick={() => { alert('hi') }}>TEST</button>
+          </div>
+          <div>
+            <CalcFib count={5} />
+          </div>
         </>
       </div >
     </div >
