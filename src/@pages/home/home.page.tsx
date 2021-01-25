@@ -3,7 +3,7 @@ import {
   makeStyles,
   Theme
 } from "@material-ui/core/styles";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useWorker } from "react-hooks-worker";
 import { Link, Route, useHistory } from "react-router-dom";
 import { AppToolbar } from "../../@components/AppToolbar";
