@@ -17,7 +17,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@enums": [ "src/@enums"]
+    }
   },
   "include": ["src", "public/slowFib.worker.js"]
 }

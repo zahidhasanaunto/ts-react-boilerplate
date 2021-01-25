@@ -9,6 +9,7 @@ import { Link, Route, useHistory } from "react-router-dom";
 import { AppToolbar } from "../../@components/AppToolbar";
 // import CalcFib from "../../CalcFib";
 import './style.scss';
+import { UserTypes } from '@enums';
 
 const calcFib: any = (x: number) => {
 
